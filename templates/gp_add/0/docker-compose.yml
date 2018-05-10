@@ -1,0 +1,17 @@
+version: '2'
+services:
+  gpnode3:
+     image: 10.0.0.96:5000/database/gp_orca_conf:v1 
+     hostname: sdw3
+     labels:
+      io.rancher.scheduler.global: 'true'
+      io.rancher.scheduler.affinity:host_label: key1=106
+     networks: 
+       - docker_gwbridge
+     ports:
+       - "20030:41000"
+     volumes:
+       - /opt/gpnode3/gpdata_orca:/home/gpadmin/gpdata
+     privileged: true
+     tty: true
+
